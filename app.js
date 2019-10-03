@@ -1,8 +1,14 @@
 const compression = require('compression');
 const express = require('express');
 const app = express();
-app.use(compression());
 const port = 3000;
+
+app.use(compression());
+
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
+});
 
 app.get('/', (req, res) => {
 	res.send('This one runs an express server!');
