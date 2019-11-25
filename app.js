@@ -1,5 +1,6 @@
 const compression = require('compression');
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3000;
 
@@ -18,6 +19,12 @@ app.get('/demo', (req, res) => {
   res.set('X-full-stack', '4life');
   res.status(418);
   res.send('I prefer coffee');
+});
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/pokemon-test-app', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
