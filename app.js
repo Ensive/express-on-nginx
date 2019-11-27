@@ -21,10 +21,4 @@ app.get('/demo', (req, res) => {
   res.send('I prefer coffee');
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/pokemon-test-app', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
